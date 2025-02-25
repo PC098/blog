@@ -189,106 +189,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="fd39373c-4453-4425-9b12-db5f5b89add2" class="cell" data-execution_count="1">
+<div id="fd39373c-4453-4425-9b12-db5f5b89add2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    name, set_name <span class="op">=</span> solara.use_state(<span class="st">"Happy"</span>)  <span class="co"># Unpack tuple correctly</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    solara.InputText(<span class="st">"Enter your name:"</span>, value<span class="op">=</span>name, on_value<span class="op">=</span>set_name)  <span class="co"># Bind state updates</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    name, set_name <span class="op">=</span> solara.use_state(<span class="st">"Happy"</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    solara.InputText(<span class="st">"Enter your name:"</span>, value<span class="op">=</span>name, on_value<span class="op">=</span>set_name) </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Greet"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>))</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    solara.Text(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>solara.display(Page())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<script type="application/javascript">
-
-                    window.jupyter_python_executable = '\r\r';
-                    window.jupyter_widget_checks_silent = true;
-                    window.jupyter_widget_checks_libraries = [{"python": "ipyvuetify", "classic": "jupyter-vuetify/extension", "lab": "jupyter-vuetify"}, {"python": "ipyvue", "classic": "jupyter-vue/extension", "lab": "jupyter-vue"}];
-                    
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<div class="jupyter-widget-checks-container">
-    <script>
-        (function () {
-            console.log("Checking for jupyter-widgets extensions")
-            const inLab = window._JUPYTERLAB !== undefined;
-            const silent = jupyter_widget_checks_silent;
-            const containers = document.getElementsByClassName('jupyter-widget-checks-container');
-            const rootEl = containers[containers.length - 1];
-            const libraries = window.jupyter_widget_checks_libraries;
-
-            function getBaseUrl() {
-                const labConfigData = document.getElementById("jupyter-config-data");
-                if (labConfigData) {
-                    /* lab and Voila */
-                    return JSON.parse(labConfigData.textContent).baseUrl;
-                }
-                let base = document.body.dataset.baseUrl || document.baseURI;
-                return base;
-            }
-
-            function checkLibrary(extensions, library) {
-                let installed = false;
-                let ok = true;
-                if (inLab) {
-                    installed = _JUPYTERLAB[library.lab] !== undefined
-                } else {
-                    installed = extensions[library.classic] !== undefined;
-                    let enabled = extensions[library.classic] === true;
-                }
-                const div = document.createElement("div")
-                if (installed) {
-                    if (!silent) {
-                        div.innerHTML = `Extension ${library.python} is installed at the server ✅`
-                        rootEl.appendChild(div)
-                    }
-                } else {
-                    div.innerHTML = `Extension ${library.python} is <b>NOT</b> installed at the server ❌.`
-                    rootEl.appendChild(div)
-                    ok = false;
-                }
-                return ok;
-            }
-
-            async function check() {
-                const url = `${getBaseUrl()}api/config/notebook`
-                const response = (await fetch(url));
-                const data = await response.json()
-                const extensions = data["load_extensions"];
-                var ok = true;
-                let needsInstall = [];
-                libraries.forEach((library) => {
-                    if (!checkLibrary(extensions, library)) {
-                        ok = false;
-                        needsInstall.push(library.python)
-                        console.log("Needs install", library.python)
-                    }
-                })
-                console.log(ok, needsInstall)
-                if (!ok) {
-                    const div = document.createElement("div")
-                    const div2 = document.createElement("div")
-                    div.innerHTML = `Run <code>${jupyter_python_executable} -m pip install ${needsInstall.join(" ")}</code>. Refresh the page after installation.`
-                    div2.innerHTML = `Visit <a href="https://solara.dev/documentation/getting_started/troubleshoot" target="_blank">https://solara/dev/documentation/getting_started/troubleshoot</a> for more information.`
-                    rootEl.appendChild(div)
-                    rootEl.appendChild(div2)
-                }
-            }
-            check()
-        })();
-    </script>
-</div>
-</div>
-<div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"98729e820c4c4434a0522815fed40dd0","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"3081ed42fe90414394691e7cd89bb4ac","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="63393fc6-1560-4690-8f80-63d601ee4db0" class="cell" data-execution_count="2">
+<p><img src="./1.png" class="img-fluid"></p>
+<div id="63393fc6-1560-4690-8f80-63d601ee4db0" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -311,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>solara.display(Page())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"f9495e47865445738eb3fd5afe1da90e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"447953f2473248c4a15d4d086c05d2a4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
@@ -322,12 +241,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="afa1786d-5d1a-4c59-b010-85766dda731e" class="cell" data-execution_count="3">
+<p><img src="./2.png" class="img-fluid"></p>
+<div id="afa1786d-5d1a-4c59-b010-85766dda731e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ThemeToggle():</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    dark_mode, set_dark_mode <span class="op">=</span> solara.use_state(<span class="va">False</span>)  <span class="co"># ✅ State for dark mode</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    dark_mode, set_dark_mode <span class="op">=</span> solara.use_state(<span class="va">False</span>)  </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Toggle Theme"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: set_dark_mode(<span class="kw">not</span> dark_mode))  <span class="co"># ✅ Toggle theme</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Toggle Theme"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: set_dark_mode(<span class="kw">not</span> dark_mode)) </span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dark_mode:</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        solara.Text(<span class="st">"🌙 Dark Mode Activated"</span>, style<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"white"</span>, <span class="st">"background"</span>: <span class="st">"black"</span>, <span class="st">"padding"</span>: <span class="st">"10px"</span>})</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
@@ -336,50 +256,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ThemeToggle()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"ab6b54c1820147d1afd18afd572c1d22","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"f8d1adb124eb4d79a429f167367c5d6d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="0a1c97ba-ce8e-42a2-b214-aa47eb41e1eb" class="cell" data-execution_count="4">
+<p><img src="./3.png" class="img-fluid"></p>
+<div id="0a1c97ba-ce8e-42a2-b214-aa47eb41e1eb" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> TodoApp():</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    tasks, set_tasks <span class="op">=</span> solara.use_state([])  <span class="co"># ✅ Store tasks as a list</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    new_task, set_new_task <span class="op">=</span> solara.use_state(<span class="st">""</span>)  <span class="co"># ✅ Store new task input</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    tasks, set_tasks <span class="op">=</span> solara.use_state([])  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    new_task, set_new_task <span class="op">=</span> solara.use_state(<span class="st">""</span>)  </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_task():</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> new_task.strip():</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            set_tasks(tasks <span class="op">+</span> [new_task])  <span class="co"># ✅ Add new task to list</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            set_new_task(<span class="st">""</span>)  <span class="co"># ✅ Clear input after adding</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            set_tasks(tasks <span class="op">+</span> [new_task])  </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            set_new_task(<span class="st">""</span>)  </span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    solara.InputText(<span class="st">"New Task"</span>, value<span class="op">=</span>new_task, on_value<span class="op">=</span>set_new_task)  <span class="co"># ✅ Input box</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Add Task"</span>, on_click<span class="op">=</span>add_task)  <span class="co"># ✅ Add task button</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    solara.InputText(<span class="st">"New Task"</span>, value<span class="op">=</span>new_task, on_value<span class="op">=</span>set_new_task)  </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Add Task"</span>, on_click<span class="op">=</span>add_task)  </span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> task <span class="kw">in</span> tasks:</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        solara.Text(<span class="ss">f"✔ </span><span class="sc">{</span>task<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ✅ Display each task</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>TodoApp()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        solara.Text(<span class="ss">f"✔ </span><span class="sc">{</span>task<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>TodoApp()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"37ff1cdb276b4e42b54eb1d46434c66e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"71f141a6f3b8470fa5d2db59caecd667","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="b8e9823f-81b1-462a-b802-ba54e36a6164" class="cell" data-execution_count="5">
+<p><img src="./4.png" class="img-fluid"></p>
+<div id="b8e9823f-81b1-462a-b802-ba54e36a6164" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Counter():</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    count, set_count <span class="op">=</span> solara.use_state(<span class="dv">0</span>)  <span class="co"># ✅ Initialize count as 0</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    solara.Text(<span class="ss">f"Count: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ✅ Display count</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Increase"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: set_count(count <span class="op">+</span> <span class="dv">1</span>))  <span class="co"># ✅ Increment count on click</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>Counter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    count, set_count <span class="op">=</span> solara.use_state(<span class="dv">0</span>) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    solara.Text(<span class="ss">f"Count: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Increase"</span>, on_click<span class="op">=</span><span class="kw">lambda</span>: set_count(count <span class="op">+</span> <span class="dv">1</span>)) </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Counter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"fc72a33f87df425ca0cda66535a05419","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"fe889f9d37644320b25d4e61b92a4a20","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="b8dfd1af-c042-4198-94d4-d33d9ff4c19b" class="cell" data-execution_count="6">
+<p><img src="./5.png" class="img-fluid"></p>
+<div id="b8dfd1af-c042-4198-94d4-d33d9ff4c19b" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -391,22 +312,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    joke, set_joke <span class="op">=</span> solara.use_state(<span class="st">"Click the button to get a joke!"</span>)  <span class="co"># ✅ Correctly unpack state</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    joke, set_joke <span class="op">=</span> solara.use_state(<span class="st">"Click the button to get a joke!"</span>) </span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_joke():</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        set_joke(random.choice(jokes))  <span class="co"># ✅ Use set_joke() to update state</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        set_joke(random.choice(jokes))  </span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    solara.Text(joke, style<span class="op">=</span><span class="st">"font-size: 18px; font-weight: bold;"</span>)  <span class="co"># ✅ Use 'joke' directly</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    solara.Text(joke, style<span class="op">=</span><span class="st">"font-size: 18px; font-weight: bold;"</span>)  </span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    solara.Button(<span class="st">"Tell me a joke"</span>, on_click<span class="op">=</span>get_joke)</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>solara.display(Page())  <span class="co"># ✅ Use Page() instead of Page</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>solara.display(Page())  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8f5ca2d14fdf42fbb587f1032f4f9f9b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"3d529d307b694fb3ab0d702377de9ab8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="3d2aab9e-5885-4be9-992d-9cd6b82712b0" class="cell" data-execution_count="7">
+<p><img src="./6.png" class="img-fluid"></p>
+<div id="3d2aab9e-5885-4be9-992d-9cd6b82712b0" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -414,15 +336,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"JavaScript"</span>, <span class="st">"C++"</span>, <span class="st">"Java"</span>]</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    votes <span class="op">=</span> {option: solara.use_state(<span class="dv">0</span>) <span class="cf">for</span> option <span class="kw">in</span> options}  <span class="co"># ✅ Define state inside component</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    votes <span class="op">=</span> {option: solara.use_state(<span class="dv">0</span>) <span class="cf">for</span> option <span class="kw">in</span> options} </span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> vote(option):</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        votes[option][<span class="dv">1</span>](votes[option][<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)  <span class="co"># ✅ Correct state update</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        votes[option][<span class="dv">1</span>](votes[option][<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)  </span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> <span class="bu">list</span>(votes.keys())</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    sizes <span class="op">=</span> [votes[option][<span class="dv">0</span>] <span class="cf">for</span> option <span class="kw">in</span> options]  <span class="co"># ✅ Extract values properly</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    sizes <span class="op">=</span> [votes[option][<span class="dv">0</span>] <span class="cf">for</span> option <span class="kw">in</span> options]  </span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ✅ Avoid error: Ensure pie chart has at least one non-zero value</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">sum</span>(sizes) <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"No votes yet!"</span>, fontsize<span class="op">=</span><span class="dv">14</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>)</span>
@@ -435,12 +357,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    solara.FigureMatplotlib(fig)</span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> option <span class="kw">in</span> options:</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        solara.Button(<span class="ss">f"Vote for </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss">"</span>, on_click<span class="op">=</span><span class="kw">lambda</span> opt<span class="op">=</span>option: vote(opt))  <span class="co"># ✅ Fix lambda issue</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        solara.Button(<span class="ss">f"Vote for </span><span class="sc">{</span>option<span class="sc">}</span><span class="ss">"</span>, on_click<span class="op">=</span><span class="kw">lambda</span> opt<span class="op">=</span>option: vote(opt))  </span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>solara.display(Page())  <span class="co"># ✅ Correct for Jupyter</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>solara.display(Page()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7483269edb8b4828bbb6bf6fd402c014","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"6db97de589874dfc89ab7af5b64779d8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
@@ -451,6 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p><img src="./7.png" class="img-fluid"></p>
 
 
 
@@ -545,7 +468,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/PC098\.github\.io\/blog\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

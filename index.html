@@ -205,7 +205,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1740421800000" data-listing-file-modified-sort="1740492148872" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1740421800000" data-listing-file-modified-sort="1740493535714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <div class="thumbnail">
 <p><a href="./posts/notebook/exposition.html" class="no-external"></a></p><a href="./posts/notebook/exposition.html" class="no-external">
 <p><img loading="lazy" src="./posts/notebook/image.jpg" class="thumbnail-image"></p>
@@ -224,8 +224,9 @@ window.Quarto = {
 <span id="cb1-2"></span>
 <span id="cb1-3"><span class="at">@solara.component</span></span>
 <span id="cb1-4"><span class="kw">def</span> Page():</span>
-<span id="cb1-5">    name, set_name <span class="op">=</span> solara.use_state(<span class="st">"Happy"</span>)  <span class="co"># Unpack tuple correctly</span></span>
-<span id="cb1-6">    solara.InputText(<span class="st">"Enter your name:"</span>, value<span class="op">=</span>name…<span class="op"></span><span class="co"></span></span><span id="cb1-7"><span class="st"></span><span class="op"></span><span class="kw"></span><span class="bu"></span><span class="ss"></span><span class="sc"></span><span class="sc"></span><span class="ss"></span></span><span id="cb1-8"><span class="ss"></span><span class="sc"></span><span class="sc"></span><span class="ss"></span></span><span id="cb1-9"></span><span id="cb1-10"></span></code></pre></div><div class="cell-output cell-output-display"><script type="application/javascript"></script></div><div class="cell-output cell-output-display"><div class="jupyter-widget-checks-container"><script></script></div></div><div class="cell-output cell-output-display"><script type="application/vnd.jupyter.widget-view+json"></script></div></a>
+<span id="cb1-5">    name, set_name <span class="op">=</span> solara.use_state(<span class="st">"Happy"</span>) </span>
+<span id="cb1-6">    solara.InputText(<span class="st">"Enter your name:"</span>, value<span class="op">=</span>name, on_value<span class="op">=</span>set_name) </span>
+<span id="cb1-7">   …<span class="st"></span><span class="op"></span><span class="kw"></span><span class="bu"></span><span class="ss"></span><span class="sc"></span><span class="sc"></span><span class="ss"></span></span><span id="cb1-8"><span class="ss"></span><span class="sc"></span><span class="sc"></span><span class="ss"></span></span><span id="cb1-9"></span><span id="cb1-10"></span></code></pre></div><div class="cell-output cell-output-display"><script type="application/vnd.jupyter.widget-view+json"></script></div></a>
 </div>
 </div>
 <div class="metadata">
@@ -362,7 +363,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/PC098\.github\.io\/blog\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
